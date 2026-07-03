@@ -57,7 +57,7 @@
 
                 <div class="barberos-grid">
 
-                    <div class="barbero-card active" data-barbero="Seba">
+                    <div class="barbero-card" data-barbero="Seba">
 
                         <img src="assets/img/seba.jpeg" alt="Sebastian">
 
@@ -79,12 +79,14 @@
 
                 </div>
 
-                <select id="barbero" hidden>
+                <select id="barbero" hidden required>
 
-                    <option value="Seba" selected>Sebastian</option>
-
+                    <option value="" selected></option>
+                
+                    <option value="Seba">Sebastian</option>
+                
                     <option value="Ale">Ale</option>
-
+                
                 </select>
 
                 <label for="nombre">
@@ -114,15 +116,13 @@
                 <label for="servicio">
                     Servicio
                 </label>
-
                 <select id="servicio" required>
 
-                    <option value="" disabled selected>
-                        Elegí un servicio
+                    <option value="" selected disabled>
+                        Primero seleccioná un barbero
                     </option>
-
+                
                 </select>
-
                 <label for="fecha">
                     Seleccioná el día
                 </label>

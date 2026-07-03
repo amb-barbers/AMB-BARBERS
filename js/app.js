@@ -23,7 +23,8 @@ fechaInput.min = fechaHoyStr;
 
 // 1. Inicializar combo de barberos dinámicamente
 renderizarSelectBarberos(selectBarbero);
-actualizarSelectServicios(selectBarbero.value, servicioSelect);
+servicioSelect.innerHTML =
+'<option value="" selected disabled>Primero seleccioná un barbero</option>';
 
 // Escuchador de cambios en el barbero
 selectBarbero.addEventListener('change', (e) => {

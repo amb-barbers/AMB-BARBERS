@@ -3,7 +3,7 @@ import { db } from './firebase/firebase-config.js';
 import { collection, onSnapshot, deleteDoc, doc, updateDoc, addDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // --- MEJORA DE SONIDO ---
-const sonidoTurno = new Audio('notificacion.mp3');
+const sonidoTurno = new Audio('/assets/audio/notificacion.mp3');
 let primeraCarga = true; 
 // ------------------------
 
