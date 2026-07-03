@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AMB BARBERS| Panel Administrativo</title>
+
+    <link rel="icon" href="assets/img/logo_bn.jpeg">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="css/admin.css">
+
+</head>
+
+<body>
+    <header class="admin-topbar">
+        <div class="logo-area">
+            <img src="assets/img/logo_bn.jpeg" alt="AMB Logo">
+            <span>AMB BARBERS</span>
+        </div>
+        <div class="user-area">
+            <i class="fas fa-user-circle"></i> Administrador
+        </div>
+    </header>
+
+<!-- =====================================================
+     LOGIN
+===================================================== -->
+
+<div id="login-modal" class="login-overlay">
+
+    <div class="login-box">
+
+        <img
+            src="assets/img/logo_bn.jpeg"
+            class="login-logo"
+            alt="AMB VIP">
+
+        <span class="login-badge">
+
+            PANEL PRIVADO
+
+        </span>
+
+        <h2>
+
+            AMB BARBERS
+
+        </h2>
+
+        <p class="login-subtitle">
+
+            Acceso exclusivo para administradores.
+
+        </p>
+
+        <input
+            id="pass-input"
+            type="password"
+            placeholder="Ingresá la contraseña">
+
+        <p
+            id="login-error"
+            class="login-error">
+
+        </p>
+
+        <button
+            id="btn-login"
+            class="btn-login-submit">
+
+            INGRESAR
+
+        </button>
+
+        <button
+            class="btn-login-back"
+            onclick="window.location.href='index.html'">
+
+            ← VOLVER AL SITIO
+
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+const password="amb2026";
+
+const modal=document.getElementById("login-modal");
+
+const input=document.getElementById("pass-input");
+
+const btn=document.getElementById("btn-login");
+
+const error=document.getElementById("login-error");
+
+function ingresar(){
+
+if(input.value===password){
+
+modal.style.opacity="0";
+
+setTimeout(()=>{
+
+modal.style.display="none";
+
+},300);
+
+}else{
+
+error.style.display="block";
+
+input.value="";
+
+input.focus();
+
+}
+
+}
+
+btn.addEventListener("click",ingresar);
+
+input.addEventListener("keypress",e=>{
+
+if(e.key==="Enter") ingresar();
+
+});
+
+});
+
+</script>
+
+<!-- =====================================================
+     CONTENEDOR PRINCIPAL
+===================================================== -->
+
+<div class="background-wrapper bg-admin">
+
+<div class="admin-container">
+    <!-- ======================================
+        VISUALIZACIÓN Y ESTADÍSTICAS
+======================================= -->
+
+<section class="dashboard-section">
+
+    <div class="section-header">
+
+        <div>
+            <h2>💈 Visualización</h2>
+            <p>
+                Elegí qué agenda querés administrar.
+            </p>
+        </div>
+
+    </div>
+
+    <div class="barberos-filtro-main">
+
+        <button
+            id="btn-filtro-todos"
+            class="btn-filtro activo"
+            onclick="cambiarBarberoVisualizacion('Todos')">
+
+            TODOS
+
+        </button>
+
+        <button
+            id="btn-filtro-seba"
+            class="btn-filtro"
+            onclick="cambiarBarberoVisualizacion('Seba')">
+
+            SEBA
+
+        </button>
+
+        <button
+            id="btn-filtro-alejandro"
+            class="btn-filtro"
+            onclick="cambiarBarberoVisualizacion('Alejandro')">
+
+            ALE
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<section class="dashboard-section">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>📊 Estadísticas</h2>
+
+            <p>
+
+                Información actualizada en tiempo real.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                📅
+
+            </div>
+
+            <div class="stat-info">
+
+                <span id="labelHoy">
+
+                    Turnos Hoy
+
+                </span>
+
+                <h2 id="cantHoy">
+
+                    0
+
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                ✂️
+
+            </div>
+
+            <div class="stat-info">
+
+                <span id="labelMes">
+
+                    Cortes Realizados
+
+                </span>
+
+                <h2 id="cantTotal">
+
+                    0
+
+                </h2>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card stat-card-primary">
+
+            <div class="stat-icon">
+
+                💰
+
+            </div>
+
+            <div class="stat-info">
+
+                <span id="labelCaja">
+
+                    Caja Hoy
+
+                </span>
+
+                <h2 id="cajaHoy">
+
+                    $0
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     BLOQUE 3 · GESTIÓN DE TURNOS
+====================================================== -->
+
+<section class="dashboard-section">
+
+    <div class="section-header">
+
+        <div>
+            <h2>⚙ Gestión de Agenda</h2>
+            <p>
+                Administrá bloqueos, turnos y reportes.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- BLOQUEO DE HORARIOS -->
+
+    <div class="bloqueo-container">
+
+        <h3>
+
+            🚫 Bloquear Horarios
+
+        </h3>
+
+        <div class="bloqueo-grid">
+
+            <input
+                type="date"
+                id="fechaBloqueo"
+                required
+            >
+
+            <select id="horaInicio">
+
+                <option value="" selected disabled>
+                    Desde
+                </option>
+
+            </select>
+
+            <select id="horaFin">
+
+                <option value="" selected disabled>
+                    Hasta
+                </option>
+
+            </select>
+
+            <select id="barberoBloqueo">
+
+                <option value="Seba">
+                    Seba
+                </option>
+
+                <option value="Ale">
+                    Ale
+                </option>
+
+                <option value="Todos">
+                    Ambos
+                </option>
+
+            </select>
+
+            <button id="btnBloquear">
+
+                BLOQUEAR
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- FILTROS DE VISTA -->
+
+    <div class="filtros-contenedor">
+
+        <button
+            id="btn-ver-turnos"
+            class="btn-filtro activo"
+            onclick="filtrarVista('turnos')">
+
+            <i class="fas fa-calendar-check"></i>
+
+            Turnos
+
+        </button>
+
+        <button
+            id="btn-ver-bloqueos"
+            class="btn-filtro"
+            onclick="filtrarVista('bloqueos')">
+
+            <i class="fas fa-ban"></i>
+
+            Bloqueos
+
+        </button>
+
+        <button
+            id="btn-ver-resumen"
+            class="btn-filtro"
+            onclick="filtrarVista('resumen')">
+
+            <i class="fas fa-chart-column"></i>
+
+            Resumen
+
+        </button>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     BLOQUE 4 · RESUMEN SEMANAL
+====================================================== -->
+
+<section
+    id="seccion-resumen"
+    class="dashboard-section"
+    style="display:none;">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>📊 Resumen Semanal</h2>
+
+            <p>
+                Rendimiento y caja de la semana.
+            </p>
+
+        </div>
+
+        <button
+            id="btnDescargarExcel"
+            class="btn-descargar">
+
+            <i class="fas fa-file-excel"></i>
+
+            DESCARGAR REPORTE
+
+        </button>
+
+    </div>
+
+    <div
+        id="semanaGrid"
+        class="grid-resumen-semanal">
+
+        <div class="loading-card">
+
+            <i class="fas fa-spinner fa-spin"></i>
+
+            Calculando estadísticas...
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =====================================================
+     BLOQUE 5 · TABLA DE TURNOS
+====================================================== -->
+
+<section
+    id="contenedor-tabla-general"
+    class="dashboard-section">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>📅 Agenda de Turnos</h2>
+
+            <p>
+                Todos los turnos registrados aparecerán aquí en tiempo real.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="tabla-premium">
+
+            <thead>
+
+                <tr>
+
+                    <th>Fecha</th>
+
+                    <th>Hora</th>
+
+                    <th>Barbero</th>
+
+                    <th>Cliente</th>
+
+                    <th>WhatsApp</th>
+
+                    <th>Servicio</th>
+
+                    <th>Precio</th>
+
+                    <th>Gestión</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tabla-turnos">
+
+                <tr>
+
+                    <td colspan="8" class="tabla-loading">
+
+                        <i class="fas fa-spinner fa-spin"></i>
+
+                        Cargando turnos...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<script type="module" src="/js/admin.js"></script>
+
+<!-- =====================================================
+     MODAL · AGENDA BLOQUEADA
+====================================================== -->
+
+<div
+    id="modal-bloqueo"
+    class="login-overlay"
+    style="display:none; opacity:1;">
+
+    <div class="login-box">
+
+        <i
+            class="fas fa-calendar-check"
+            style="
+                font-size:60px;
+                color:#d9d9d9;
+                margin-bottom:20px;
+            ">
+        </i>
+
+        <h2>
+
+            ¡AGENDA BLOQUEADA!
+
+        </h2>
+
+        <p>
+
+            Los horarios seleccionados ya no estarán disponibles para realizar reservas.
+
+        </p>
+
+        <button
+            class="btn-login-submit"
+            onclick="document.getElementById('modal-bloqueo').style.display='none'">
+
+            ENTENDIDO
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+     MODAL · CONFIRMACIÓN
+====================================================== -->
+
+<div
+    id="modal-confirmacion"
+    class="login-overlay"
+    style="
+        display:none;
+        opacity:0;
+        transition:opacity .3s ease;
+    ">
+
+    <div
+        class="login-box"
+        style="max-width:420px;">
+
+        <div
+            id="confirm-icon-container"
+            style="margin-bottom:20px;">
+
+            <i
+                class="fas fa-question-circle"
+                style="
+                    font-size:58px;
+                    color:#d9d9d9;
+                ">
+            </i>
+
+        </div>
+
+        <h2
+            id="confirm-titulo">
+
+            ¿ESTÁS SEGURO?
+
+        </h2>
+
+        <p
+            id="confirm-mensaje"
+            style="
+                margin:20px 0 30px;
+                color:#bfbfbf;
+                line-height:1.6;
+                text-transform:none;
+                font-family:'Roboto Condensed',sans-serif;
+            ">
+
+        </p>
+
+        <div
+            style="
+                display:flex;
+                gap:15px;
+            ">
+
+            <button
+                id="btn-confirm-cancelar"
+                class="btn-login-back"
+                style="
+                    flex:1;
+                    margin:0;
+                ">
+
+                CANCELAR
+
+            </button>
+
+            <button
+                id="btn-confirm-aceptar"
+                class="btn-login-submit"
+                style="
+                    flex:1;
+                    margin:0;
+                ">
+
+                CONTINUAR
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

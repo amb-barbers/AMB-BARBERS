@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d0d0d">
+
+    <link rel="icon" href="assets/img/logo_bn.jpeg" type="image/jpeg">
+
+    <title>AMB BARBERS | Reserva tu turno</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+   <!-- =========================
+        LOADING
+========================= -->
+
+<div id="loadingOverlay">
+
+    <img
+        src="assets/img/logo_bn.jpeg"
+        alt="AMB VIP"
+        class="loading-logo"
+    >
+
+    <div class="spinner"></div>
+
+    <p id="loadingMessage">
+        REDIRIGIENDO A WHATSAPP...
+    </p>
+
+</div>
+
+    <div class="background-wrapper bg-index">
+
+        <div class="container">
+
+            <img src="assets/img/logo_bn.jpeg" alt="Logo AMB" class="logo">
+
+            <h1>RESERVÁ TU TURNO</h1>
+
+            <p class="subtitulo">
+                Local exclusivo: AMB BARBERS ®
+            </p>
+
+            <form id="turnoForm">
+
+                <label for="barbero">
+                    Seleccioná tu barbero
+                </label>
+
+                <div class="barberos-grid">
+
+                    <div class="barbero-card active" data-barbero="Seba">
+
+                        <img src="assets/img/seba.jpeg" alt="Sebastian">
+
+                        <h3>Sebastian</h3>
+
+                        <span>AMB BARBERS ®</span>
+
+                    </div>
+
+                    <div class="barbero-card" data-barbero="Ale">
+
+                        <img src="assets/img/ale.jpeg" alt="Ale">
+
+                        <h3>Ale</h3>
+
+                        <span>AMB BARBERS ®</span>
+
+                    </div>
+
+                </div>
+
+                <select id="barbero" hidden>
+
+                    <option value="Seba" selected>Sebastian</option>
+
+                    <option value="Ale">Ale</option>
+
+                </select>
+
+                <label for="nombre">
+                    Nombre y Apellido
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Tu nombre"
+                    required>
+
+                <label for="whatsapp">
+                    WhatsApp
+                </label>
+
+                <input
+                    type="tel"
+                    id="whatsapp"
+                    name="whatsapp"
+                    placeholder="Ej: 2644572844"
+                    pattern="[0-9]{10,11}"
+                    title="Ingresá 10 dígitos sin el 0 ni el 15"
+                    required>
+
+                <label for="servicio">
+                    Servicio
+                </label>
+
+                <select id="servicio" required>
+
+                    <option value="" disabled selected>
+                        Elegí un servicio
+                    </option>
+
+                </select>
+
+                <label for="fecha">
+                    Seleccioná el día
+                </label>
+
+                <input
+                    type="date"
+                    id="fecha"
+                    required>
+
+                <label for="hora">
+                    Seleccioná un horario
+                </label>
+
+                <div id="horariosGrid" class="horarios-grid">
+
+                    <p class="mensaje-horario">
+                        Elegí un día primero
+                    </p>
+
+                </div>
+
+                <select id="hora" hidden>
+
+                    <option value="" disabled selected>
+                        Seleccione hora
+                    </option>
+
+                </select>
+
+                <button
+                    type="submit"
+                    id="btnReservar">
+
+                    CONFIRMAR RESERVA
+
+                </button>
+
+            </form>
+
+            <footer class="footer">
+
+                <a
+                    href="https://www.instagram.com/amb_barber_vip?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                    target="_blank"
+                    class="btn-insta">
+
+                    <img
+                        src="assets/icons/instagram.png"
+                        alt="Instagram"
+                        class="insta-icon">
+
+                    SEGUINOS EN INSTAGRAM
+
+                </a>
+
+                <a
+                    href="index.html"
+                    class="btn-reserva">
+
+                    VOLVER AL INICIO
+
+                </a>
+
+            </footer>
+
+        </div>
+
+    </div>
+
+    <!-- Modal éxito -->
+<!-- =========================
+        MODAL ÉXITO
+========================= -->
+
+<div id="modal-exito" class="modal">
+
+    <div class="modal-card">
+
+        <img
+            src="assets/img/logo_bn.jpeg"
+            alt="AMB VIP"
+            class="modal-logo"
+        >
+
+        <div class="modal-icon">
+
+            ✓
+
+        </div>
+
+        <h2 class="modal-title">
+
+            ¡RESERVA ENVIADA!
+
+        </h2>
+
+        <p class="modal-text">
+
+            Estamos abriendo WhatsApp para enviar tu solicitud de turno.
+
+            <br><br>
+
+            Una vez enviada, el barbero confirmará tu reserva.
+
+        </p>
+
+        <button
+            class="modal-btn"
+            onclick="window.location.href='index.html'">
+
+            ENTENDIDO
+
+        </button>
+
+    </div>
+
+</div>
+
+    <!-- Modal alerta -->
+
+    <!-- =========================
+        MODAL ALERTA
+========================= -->
+
+<div id="modal-alerta" class="modal">
+
+    <div class="modal-card">
+
+        <div class="modal-icon">
+
+            ⚠️
+
+        </div>
+
+        <h2
+            id="alerta-titulo"
+            class="modal-title">
+
+            Atención
+
+        </h2>
+
+        <p
+            id="alerta-mensaje"
+            class="modal-text">
+
+        </p>
+
+        <button
+            class="modal-btn"
+            onclick="document.getElementById('modal-alerta').style.display='none'">
+
+            CORREGIR
+
+        </button>
+
+    </div>
+
+</div>
+
+    <script type="module" src="js/app.js"></script>
+
+</body>
+
+</html>

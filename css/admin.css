@@ -1,0 +1,1841 @@
+/* =====================================================
+   AMB VIP ADMIN PANEL
+   BLOQUE 1
+   RESET + VARIABLES + FONDO
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+:root{
+
+    --bg:#050505;
+    --card:#141414;
+    --card2:#1d1d1d;
+
+    --white:#ffffff;
+    --text:#f5f5f5;
+    --text2:#bfbfbf;
+
+    --border:rgba(255,255,255,.08);
+
+    --shadow:
+        0 18px 45px rgba(0,0,0,.45);
+
+    --radius:22px;
+
+    --transition:.25s ease;
+
+}
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    background:#000;
+
+    color:white;
+
+    font-family:'Roboto Condensed',sans-serif;
+
+    overflow-x:hidden;
+
+}
+
+.background-wrapper{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:40px 20px;
+
+}
+
+.bg-admin{
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.72),
+            rgba(0,0,0,.82)
+        ),
+        url("../assets/img/fondo_bn.jpeg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+}
+
+.admin-container{
+
+    width:100%;
+
+    max-width:1450px;
+
+}
+
+/* Scroll */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#111;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#3a3a3a;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#5b5b5b;
+
+}
+/* =====================================================
+   BLOQUE 2
+   LOGIN PREMIUM
+===================================================== */
+
+.login-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:99999;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    background:
+        rgba(0,0,0,.82);
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+
+    transition:.30s ease;
+
+}
+
+.login-box{
+
+    width:100%;
+
+    max-width:430px;
+
+    padding:45px 38px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(28,28,28,.95),
+            rgba(15,15,15,.95)
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:28px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.65);
+
+    text-align:center;
+
+}
+
+.login-logo{
+
+    width:110px;
+
+    height:110px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    margin-bottom:22px;
+
+    border:3px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,.08);
+
+}
+
+.login-badge{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.07);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#d9d9d9;
+
+    font-family:'Bebas Neue',sans-serif;
+
+    letter-spacing:2px;
+
+    font-size:.95rem;
+
+    margin-bottom:18px;
+
+}
+
+.login-box h2{
+
+    font-family:'Bebas Neue';
+
+    font-size:2.3rem;
+
+    letter-spacing:2px;
+
+    color:white;
+
+    margin-bottom:8px;
+
+}
+
+.login-subtitle{
+
+    color:#a8a8a8;
+
+    font-size:.95rem;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+
+}
+
+#pass-input{
+
+    width:100%;
+
+    padding:16px 18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#222;
+
+    color:white;
+
+    font-size:1rem;
+
+    outline:none;
+
+    transition:.25s;
+
+    border:1px solid transparent;
+
+}
+
+#pass-input:focus{
+
+    border-color:rgba(255,255,255,.18);
+
+    background:#292929;
+
+}
+
+#pass-input::placeholder{
+
+    color:#777;
+
+}
+
+.login-error{
+
+    display:none;
+
+    color:#ff6b6b;
+
+    margin-top:14px;
+
+    margin-bottom:5px;
+
+    font-size:.95rem;
+
+    font-weight:bold;
+
+}
+
+.btn-login-submit{
+
+    width:100%;
+
+    margin-top:28px;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-family:'Bebas Neue';
+
+    font-size:1.2rem;
+
+    letter-spacing:2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #d6d6d6
+        );
+
+    color:#000;
+
+    transition:.25s;
+
+}
+
+.btn-login-submit:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(255,255,255,.18);
+
+}
+
+.btn-login-back{
+
+    width:100%;
+
+    margin-top:14px;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-family:'Bebas Neue';
+
+    font-size:1.05rem;
+
+    letter-spacing:1px;
+
+    transition:.25s;
+
+}
+
+.btn-login-back:hover{
+
+    background:rgba(255,255,255,.05);
+
+    border-color:rgba(255,255,255,.22);
+
+}
+/* =====================================================
+   BLOQUE 3
+   HEADER + DASHBOARD + ESTADÍSTICAS
+===================================================== */
+
+.dashboard-header{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(28,28,28,.96),
+            rgba(18,18,18,.96)
+        );
+
+    border:1px solid var(--border);
+
+    border-radius:28px;
+
+    padding:35px;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:28px;
+
+}
+
+.dashboard-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+}
+
+.dashboard-logo{
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:3px solid rgba(255,255,255,.15);
+
+    box-shadow:
+
+        0 0 25px rgba(255,255,255,.08);
+
+}
+
+.dashboard-top h1{
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:2.5rem;
+
+    letter-spacing:3px;
+
+    color:white;
+
+}
+
+.dashboard-top p{
+
+    color:var(--text2);
+
+    margin-top:6px;
+
+    font-size:1rem;
+
+}
+
+.dashboard-divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:rgba(255,255,255,.08);
+
+    margin:28px 0;
+
+}
+
+.dashboard-info{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+.dashboard-chip{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 18px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    color:#d9d9d9;
+
+    font-size:.95rem;
+
+    transition:var(--transition);
+
+}
+
+.dashboard-chip:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/* ===========================
+   SECCIONES
+=========================== */
+
+.dashboard-section{
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(25,25,25,.95),
+            rgba(18,18,18,.95)
+        );
+
+    border-radius:24px;
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    padding:30px;
+
+    margin-bottom:25px;
+
+}
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    margin-bottom:25px;
+
+    flex-wrap:wrap;
+
+}
+
+.section-header h2{
+
+    font-family:'Bebas Neue';
+
+    font-size:2rem;
+
+    letter-spacing:2px;
+
+    color:white;
+
+}
+
+.section-header p{
+
+    color:var(--text2);
+
+    margin-top:5px;
+
+}
+
+/* ===========================
+   CARDS ESTADÍSTICAS
+=========================== */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(240px,1fr));
+
+    gap:22px;
+
+}
+
+.stat-card{
+
+    background:
+
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.04),
+            rgba(255,255,255,.02)
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:24px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    transition:var(--transition);
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+    border-color:rgba(255,255,255,.18);
+
+}
+
+.stat-card-primary{
+
+    border:1px solid rgba(255,255,255,.20);
+
+}
+
+.stat-icon{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.06);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:1.8rem;
+
+    flex-shrink:0;
+
+}
+
+.stat-info{
+
+    flex:1;
+
+}
+
+.stat-info span{
+
+    display:block;
+
+    color:#bdbdbd;
+
+    font-size:.95rem;
+
+    margin-bottom:8px;
+
+}
+
+.stat-info h2{
+
+    font-family:'Bebas Neue';
+
+    font-size:2.2rem;
+
+    letter-spacing:2px;
+
+    color:white;
+
+}
+/* =====================================================
+   BLOQUE 4
+   GESTIÓN DE AGENDA
+   FILTROS
+   BLOQUEOS
+===================================================== */
+
+/*==============================
+  FILTRO DE BARBEROS
+==============================*/
+
+.barberos-filtro-main{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
+
+}
+
+.btn-filtro{
+
+    flex:1;
+
+    min-width:150px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#232323;
+
+    color:#d8d8d8;
+
+    cursor:pointer;
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:1.1rem;
+
+    letter-spacing:1.5px;
+
+    transition:var(--transition);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.btn-filtro:hover{
+
+    background:#303030;
+
+    transform:translateY(-3px);
+
+}
+
+.btn-filtro.activo{
+
+    background:linear-gradient(
+
+        180deg,
+
+        #ffffff,
+
+        #d8d8d8
+
+    );
+
+    color:#000;
+
+    border-color:white;
+
+    box-shadow:
+
+        0 10px 25px rgba(255,255,255,.15);
+
+}
+
+/*==============================
+  BLOQUEO DE AGENDA
+==============================*/
+
+.bloqueo-container{
+
+    margin-top:25px;
+
+    padding:28px;
+
+    border-radius:22px;
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            rgba(255,255,255,.04),
+
+            rgba(255,255,255,.02)
+
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+.bloqueo-container h3{
+
+    font-family:'Bebas Neue';
+
+    font-size:1.7rem;
+
+    letter-spacing:2px;
+
+    margin-bottom:22px;
+
+    color:white;
+
+}
+
+.bloqueo-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+        repeat(auto-fit,minmax(180px,1fr));
+
+    gap:15px;
+
+}
+
+.bloqueo-grid input,
+
+.bloqueo-grid select{
+
+    width:100%;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    background:#202020;
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    outline:none;
+
+    transition:var(--transition);
+
+    font-size:15px;
+
+}
+
+.bloqueo-grid input:focus,
+
+.bloqueo-grid select:focus{
+
+    border-color:rgba(255,255,255,.25);
+
+    background:#2a2a2a;
+
+}
+
+.bloqueo-grid input[type="date"]::-webkit-calendar-picker-indicator{
+
+    filter:invert(1);
+
+}
+
+#btnBloquear{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    cursor:pointer;
+
+    font-family:'Bebas Neue';
+
+    font-size:1.15rem;
+
+    letter-spacing:2px;
+
+    color:#000;
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #ffffff,
+
+            #d6d6d6
+
+        );
+
+    transition:var(--transition);
+
+}
+
+#btnBloquear:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+
+        0 15px 35px rgba(255,255,255,.18);
+
+}
+
+/*==============================
+  BOTONES DE VISTA
+==============================*/
+
+.filtros-contenedor{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin-top:30px;
+
+}
+
+.filtros-contenedor .btn-filtro{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    min-width:200px;
+
+}
+
+.filtros-contenedor i{
+
+    font-size:1rem;
+
+}
+
+/*==============================
+  BOTÓN EXCEL
+==============================*/
+
+.btn-descargar{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:14px 22px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-family:'Bebas Neue';
+
+    font-size:1rem;
+
+    letter-spacing:1.5px;
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            #ffffff,
+
+            #d7d7d7
+
+        );
+
+    color:#000;
+
+    transition:var(--transition);
+
+}
+
+.btn-descargar:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+
+        0 15px 35px rgba(255,255,255,.18);
+
+}
+/* =====================================================
+   BLOQUE 5
+   TABLA PREMIUM
+===================================================== */
+
+.table-responsive{
+
+    width:100%;
+
+    overflow-x:auto;
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#151515;
+
+    box-shadow:var(--shadow);
+
+}
+
+.tabla-premium{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:1100px;
+
+}
+
+.tabla-premium thead{
+
+    background:#1f1f1f;
+
+}
+
+.tabla-premium thead th{
+
+    padding:18px;
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:1rem;
+
+    letter-spacing:2px;
+
+    color:white;
+
+    text-align:center;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    white-space:nowrap;
+
+}
+
+.tabla-premium tbody tr{
+
+    transition:.25s;
+
+}
+
+.tabla-premium tbody tr:nth-child(even){
+
+    background:#171717;
+
+}
+
+.tabla-premium tbody tr:nth-child(odd){
+
+    background:#121212;
+
+}
+
+.tabla-premium tbody tr:hover{
+
+    background:#242424;
+
+}
+
+.tabla-premium td{
+
+    padding:16px 12px;
+
+    text-align:center;
+
+    color:#d7d7d7;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    vertical-align:middle;
+
+}
+
+.tabla-premium td strong{
+
+    color:white;
+
+}
+
+.tabla-loading{
+
+    padding:45px !important;
+
+    color:#bdbdbd;
+
+    font-size:1rem;
+
+    text-align:center;
+
+}
+
+.tabla-loading i{
+
+    margin-right:10px;
+
+}
+
+/* ===========================
+   FILA COBRADA
+=========================== */
+
+.fila-completada{
+
+    opacity:.65;
+
+}
+
+.fila-completada td{
+
+    color:#8f8f8f;
+
+}
+
+/* ===========================
+   CELDA BOTONES
+=========================== */
+
+.acciones-celda{
+
+    min-width:280px;
+
+}
+
+/* ===========================
+   BOTONERA
+=========================== */
+
+.botones-gestion-mobile{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:8px;
+
+}
+
+/* ===========================
+   BOTONES
+=========================== */
+
+.btn-accion-mobile{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    padding:10px 14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    font-size:.85rem;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.btn-accion-mobile i{
+
+    font-size:.9rem;
+
+}
+
+.btn-confirmar-mobile{
+
+    background:#2b2b2b;
+
+    color:white;
+
+}
+
+.btn-confirmar-mobile:hover{
+
+    background:#3b3b3b;
+
+}
+
+.btn-recordar-mobile{
+
+    background:#202020;
+
+    color:#d9d9d9;
+
+}
+
+.btn-recordar-mobile:hover{
+
+    background:#303030;
+
+}
+
+.btn-check-mobile{
+
+    background:white;
+
+    color:black;
+
+}
+
+.btn-check-mobile:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 10px 25px rgba(255,255,255,.18);
+
+}
+
+.btn-delete-mobile{
+
+    background:#2d1515;
+
+    color:#ff8c8c;
+
+}
+
+.btn-delete-mobile:hover{
+
+    background:#472020;
+
+}
+
+/* ===========================
+   ESTADO COBRADO
+=========================== */
+
+.estado-completado{
+
+    display:inline-block;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:#202020;
+
+    color:#d0d0d0;
+
+    font-weight:bold;
+
+    font-size:.82rem;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+/* ===========================
+   PRECIOS
+=========================== */
+
+.tabla-premium td:nth-child(7){
+
+    font-weight:bold;
+
+    color:white;
+
+    font-size:1rem;
+
+}
+
+/* ===========================
+   BARBERO
+=========================== */
+
+.tabla-premium td:nth-child(3){
+
+    font-weight:bold;
+
+    color:white;
+
+}
+
+/* ===========================
+   WHATSAPP
+=========================== */
+
+.tabla-premium td:nth-child(5){
+
+    color:#cfcfcf;
+
+    letter-spacing:.5px;
+
+}
+/* =====================================================
+   BLOQUE 5
+   TABLA PREMIUM
+===================================================== */
+
+.table-responsive{
+
+    width:100%;
+
+    overflow-x:auto;
+
+    border-radius:22px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:#151515;
+
+    box-shadow:var(--shadow);
+
+}
+
+.tabla-premium{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:1100px;
+
+}
+
+.tabla-premium thead{
+
+    background:#1f1f1f;
+
+}
+
+.tabla-premium thead th{
+
+    padding:18px;
+
+    font-family:'Bebas Neue',sans-serif;
+
+    font-size:1rem;
+
+    letter-spacing:2px;
+
+    color:white;
+
+    text-align:center;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    white-space:nowrap;
+
+}
+
+.tabla-premium tbody tr{
+
+    transition:.25s;
+
+}
+
+.tabla-premium tbody tr:nth-child(even){
+
+    background:#171717;
+
+}
+
+.tabla-premium tbody tr:nth-child(odd){
+
+    background:#121212;
+
+}
+
+.tabla-premium tbody tr:hover{
+
+    background:#242424;
+
+}
+
+.tabla-premium td{
+
+    padding:16px 12px;
+
+    text-align:center;
+
+    color:#d7d7d7;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    vertical-align:middle;
+
+}
+
+.tabla-premium td strong{
+
+    color:white;
+
+}
+
+.tabla-loading{
+
+    padding:45px !important;
+
+    color:#bdbdbd;
+
+    font-size:1rem;
+
+    text-align:center;
+
+}
+
+.tabla-loading i{
+
+    margin-right:10px;
+
+}
+
+/* ===========================
+   FILA COBRADA
+=========================== */
+
+.fila-completada{
+
+    opacity:.65;
+
+}
+
+.fila-completada td{
+
+    color:#8f8f8f;
+
+}
+
+/* ===========================
+   CELDA BOTONES
+=========================== */
+
+.acciones-celda{
+
+    min-width:280px;
+
+}
+
+/* ===========================
+   BOTONERA
+=========================== */
+
+.botones-gestion-mobile{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:8px;
+
+}
+
+/* ===========================
+   BOTONES
+=========================== */
+
+.btn-accion-mobile{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    padding:10px 14px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    text-decoration:none;
+
+    font-size:.85rem;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+.btn-accion-mobile i{
+
+    font-size:.9rem;
+
+}
+
+.btn-confirmar-mobile{
+
+    background:#2b2b2b;
+
+    color:white;
+
+}
+
+.btn-confirmar-mobile:hover{
+
+    background:#3b3b3b;
+
+}
+
+.btn-recordar-mobile{
+
+    background:#202020;
+
+    color:#d9d9d9;
+
+}
+
+.btn-recordar-mobile:hover{
+
+    background:#303030;
+
+}
+
+.btn-check-mobile{
+
+    background:white;
+
+    color:black;
+
+}
+
+.btn-check-mobile:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 10px 25px rgba(255,255,255,.18);
+
+}
+
+.btn-delete-mobile{
+
+    background:#2d1515;
+
+    color:#ff8c8c;
+
+}
+
+.btn-delete-mobile:hover{
+
+    background:#472020;
+
+}
+
+/* ===========================
+   ESTADO COBRADO
+=========================== */
+
+.estado-completado{
+
+    display:inline-block;
+
+    padding:8px 14px;
+
+    border-radius:999px;
+
+    background:#202020;
+
+    color:#d0d0d0;
+
+    font-weight:bold;
+
+    font-size:.82rem;
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+/* ===========================
+   PRECIOS
+=========================== */
+
+.tabla-premium td:nth-child(7){
+
+    font-weight:bold;
+
+    color:white;
+
+    font-size:1rem;
+
+}
+
+/* ===========================
+   BARBERO
+=========================== */
+
+.tabla-premium td:nth-child(3){
+
+    font-weight:bold;
+
+    color:white;
+
+}
+
+/* ===========================
+   WHATSAPP
+=========================== */
+
+.tabla-premium td:nth-child(5){
+
+    color:#cfcfcf;
+
+    letter-spacing:.5px;
+
+}
+/* =====================================================
+   TABLA RESPONSIVE PREMIUM
+===================================================== */
+
+@media (max-width: 768px){
+
+    .table-responsive{
+    
+        overflow:visible;
+    
+        background:none;
+    
+        border:none;
+    
+        box-shadow:none;
+    
+    }
+    
+    .tabla-premium{
+    
+        width:100%;
+    
+        min-width:100%;
+    
+    }
+    
+    .tabla-premium thead{
+    
+        display:none;
+    
+    }
+    
+    .tabla-premium,
+    .tabla-premium tbody,
+    .tabla-premium tr,
+    .tabla-premium td{
+    
+        display:block;
+    
+        width:100%;
+    
+    }
+    
+    .tabla-premium tr{
+    
+        background:#171717;
+    
+        border:1px solid rgba(255,255,255,.08);
+    
+        border-radius:18px;
+    
+        margin-bottom:20px;
+    
+        padding:18px;
+    
+        box-sizing:border-box;
+    
+        box-shadow:0 10px 25px rgba(0,0,0,.25);
+    
+    }
+    
+    .tabla-premium td{
+    
+        display:flex;
+    
+        justify-content:space-between;
+    
+        align-items:center;
+    
+        padding:12px 0;
+    
+        border:none;
+    
+        font-size:.95rem;
+    
+        text-align:right;
+    
+    }
+    
+    .tabla-premium td::before{
+    
+        content:attr(data-label);
+    
+        color:#9c9c9c;
+    
+        font-weight:bold;
+    
+        text-transform:uppercase;
+    
+        letter-spacing:1px;
+    
+        font-size:.78rem;
+    
+    }
+    
+    .tabla-premium td:last-child{
+    
+        padding-top:18px;
+    
+        margin-top:10px;
+    
+        border-top:1px solid rgba(255,255,255,.08);
+    
+    }
+    
+    .botones-gestion-mobile{
+    
+        width:100%;
+    
+        display:flex;
+    
+        flex-direction:column;
+    
+        gap:10px;
+    
+    }
+    
+    .btn-accion-mobile{
+    
+        width:100%;
+    
+        justify-content:center;
+    
+        padding:14px;
+    
+        border-radius:12px;
+    
+    }
+    
+    .estado-completado{
+    
+        width:100%;
+    
+        text-align:center;
+    
+        padding:12px;
+    
+    }
+    
+    .fila-completada{
+    
+        opacity:.75;
+    
+    }
+    
+    }
+    /*======================================
+  HEADER
+======================================*/
+
+.admin-topbar{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 30px;
+    margin-bottom:25px;
+
+    background:rgba(18,18,18,.82);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+
+    box-sizing:border-box;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.logo-area img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:50%;
+    flex-shrink:0;
+
+    border:2px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.08);
+}
+
+.logo-area span{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:2rem;
+    color:#fff;
+    letter-spacing:2px;
+    white-space:nowrap;
+}
+
+.user-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.05);
+
+    color:#ddd;
+
+    font-size:.95rem;
+}
+
+.user-area i{
+    font-size:1.3rem;
+}
