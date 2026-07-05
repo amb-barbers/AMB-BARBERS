@@ -3,7 +3,7 @@ import { db } from './firebase/firebase-config.js';
 import { collection, onSnapshot, deleteDoc, doc, updateDoc, addDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // --- MEJORA DE SONIDO ---
-const sonidoTurno = new Audio('/assets/audio/notificacion.mp3');
+const sonidoTurno = new Audio('../assets/audio/notificacion.mp3');
 let primeraCarga = true; 
 // ------------------------
 
@@ -393,8 +393,31 @@ document.addEventListener('DOMContentLoaded', () => {
             arrayReservasGlobal.push({ id, ...turno, barbero: barberoLimpio });
 
             const numLimpio = turno.whatsapp.replace(/\D/g, '');
-            const msjConfirmar = `¡Hola ${turno.nombre}! Tu turno en *AMB BARBERS ®︎* para el ${turno.fecha} a las ${turno.hora} hs ha sido *CONFIRMADO*. ¡Te esperamos! ✂️`;
-            const msjRecordar = `¡Buen día ${turno.nombre}! Te recordamos tu turno de *HOY* en *AMB BARBERS ®︎* a las ${turno.hora} hs. ¡Nos vemos! 💈`;
+
+            const msjConfirmar = `¡Listo, ${turno.nombre}! 👌
+
+            Tu lugar en *AMB BARBERS ®︎* ya está reservado.
+
+            📅 *Fecha:* ${turno.fecha}
+            🕘 *Hora:* ${turno.hora} hs
+            💈 *Barbero:* ${turno.barbero}
+            ✂️ *Servicio:* ${turno.servicio}
+
+            Te recomendamos llegar *5 minutos antes* para disfrutar la experiencia completa.
+
+            ¡Nos vemos pronto! 🔥`;
+
+            const msjRecordar = `¡Hola ${turno.nombre}! 👋
+
+            Te recordamos que *HOY* tenés tu turno en *AMB BARBERS ®︎*.
+
+            🕘 *Hora:* ${turno.hora} hs
+            💈 *Barbero:* ${turno.barbero}
+            ✂️ *Servicio:* ${turno.servicio}
+
+            Te esperamos unos minutos antes para comenzar puntual.
+
+            ¡Nos vemos! 🔥`;
 
             const fila = document.createElement('tr');
             const esCompletado = turno.estado === 'completado';

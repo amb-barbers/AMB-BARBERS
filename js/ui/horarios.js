@@ -20,8 +20,23 @@ export function renderizarHorariosDisponibles(horaSelect, numeroDia, ocupados, e
     horaSelect.innerHTML = '<option value="" disabled selected>Elegí una hora</option>';
     horariosGrid.innerHTML = '';
     
-    const turnosBase = (numeroDia === 6) ? HORARIOS.sabado : HORARIOS.semana;
-    let horariosDisponibles = 0;
+    let turnosBase;
+
+if (numeroDia >= 1 && numeroDia <= 4) {
+    // Lunes a jueves
+    turnosBase = HORARIOS.semana;
+} else if (numeroDia === 5) {
+    // Viernes
+    turnosBase = HORARIOS.viernes;
+} else if (numeroDia === 6) {
+    // Sábado
+    turnosBase = HORARIOS.sabado;
+} else {
+    // Domingo
+    turnosBase = [];
+}
+
+let horariosDisponibles = 0;
 
     turnosBase.forEach(slot => {
         const [hStr, mStr] = slot.split(':');
